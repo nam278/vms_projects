@@ -17,10 +17,15 @@ Vms/
 ├── vms-engine/             ← C++ DeepStream analytics engine
 ├── vms_app_backend/        ← Python control-plane backend
 ├── vms_app_frontend/       ← TypeScript desktop & mobile frontend
+├── .agents/                ← Agent skills (tracked)
+├── .codegraph/             ← CodeGraph index (tracked)
+├── .claude/                ← Claude config (tracked)
+├── .gemini/                ← Gemini config (tracked)
 ├── reasonix.toml           ← Reasonix agent configuration
 ├── .mcp.json               ← MCP server config (codegraph)
 ├── AGENTS.md               ← Agent guidance (read this first)
-└── README.md               ← This file
+├── README.md               ← This file
+└── .gitignore
 ```
 
 Each sub-directory is an **independent git repository** with its own build system, dependencies, and CI. Start in the relevant repo.

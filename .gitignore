@@ -6,16 +6,13 @@
 # Local SSL certificates
 ssl/
 
-# Tool caches & config
+# Tool & IDE config — uncomment to ignore
 # .agents/
 # .claude/
 # .codegraph/
 # .gemini/
-# .reasonix/
-
-# IDE
 # .vscode/
-.idea/
+# .idea/
 *.swp
 *.swo
 *~

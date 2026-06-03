@@ -90,6 +90,7 @@ cd apps/mobile && pnpm start    # mobile Metro
 
 ### Agent workflow
 - Root `reasonix.toml` defines the agent config, model, and loads skills from `.agents/skills/` in all three repos.
+- Tool config folders (`.agents/`, `.codegraph/`, `.claude/`, `.gemini/`) are tracked in the workspace root.
 - Use Reasonix plan mode for multi-step tasks: plan in the target repo, execute there, validate with that repo's commands.
 - `.mcp.json` connects the `codegraph` MCP server for code navigation across all three repos.
 
