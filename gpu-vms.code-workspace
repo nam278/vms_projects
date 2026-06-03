@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "vms-engine"
+		},
+		{
+			"path": "vms_app_frontend"
+		},
+		{
+			"path": "vms_app_backend"
+		}
+	],
+}

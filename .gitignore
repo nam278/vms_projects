@@ -1,0 +1,33 @@
+# Secrets & environment
+.env
+*.env.local
+*.env.production
+
+# Local SSL certificates
+ssl/
+
+# Tool caches & config
+# .agents/
+# .claude/
+# .codegraph/
+# .gemini/
+# .reasonix/
+
+# IDE
+# .vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Independent sub-project repos (each has its own .git)
+vms-engine/
+vms_app_backend/
+vms_app_frontend/
