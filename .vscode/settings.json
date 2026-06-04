@@ -1,0 +1,22 @@
+{
+  "chat.agentSkillsLocations": {
+    "vms_app_backend/.agents/skills": true,
+    "vms_app_frontend/.agents/skills": true,
+    "vms_engine/.agents/skills": true
+  },
+  "chat.instructionsFilesLocations": {
+    "vms_app_backend/.github/instructions": true,
+    "vms_app_frontend/.github/instructions": true,
+    "vms_engine/.github/instructions": true
+  },
+  "chat.promptFilesLocations": {
+    "vms_app_backend/.github/prompts": true,
+    "vms_app_frontend/.github/prompts": true,
+    "vms_engine/.github/prompts": true
+  },
+  "chat.agentFilesLocations": {
+    "vms_app_backend/.github/agents": true,
+    "vms_app_frontend/.github/agents": true,
+    "vms_engine/.github/agents": true
+  },
+}
