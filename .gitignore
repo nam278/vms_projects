@@ -28,3 +28,4 @@ Thumbs.db
 vms-engine/
 vms_app_backend/
 vms_app_frontend/
+.agents/skills/

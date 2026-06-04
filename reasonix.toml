@@ -62,7 +62,7 @@ price       = { cache_hit = 0.02, input = 1, output = 2, currency = "¥" }   # p
 enabled = []   # empty = all built-in tools
 
 [skills]
-paths = ["./vms_app_backend/.agents/skills", "./vms_app_frontend/.agents/skills", "./vms-engine/.agents/skills"]   # extra custom skill roots
+paths = [".agents/skills/vms_app_backend", ".agents/skills/vms_app_frontend", ".agents/skills/vms_engine"]   # extra custom skill roots
 
 [permissions]
 # Per-call gating. mode = writer fallback when no rule matches: ask|allow|deny.

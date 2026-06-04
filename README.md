@@ -30,6 +30,25 @@ Vms/
 
 Each sub-directory is an **independent git repository** with its own build system, dependencies, and CI. Start in the relevant repo.
 
+## Agent Skills
+
+The workspace root keeps a shared `.agents/skills/` directory that points to each repo's local skills folder. From the workspace root, you can recreate the symlinks with:
+
+```bash
+mkdir -p .agents/skills \
+  && ln -sfn "$(pwd)/vms-engine/.agents/skills" .agents/skills/vms-engine \
+  && ln -sfn "$(pwd)/vms_app_backend/.agents/skills" .agents/skills/vms_app_backend \
+  && ln -sfn "$(pwd)/vms_app_frontend/.agents/skills" .agents/skills/vms_app_frontend
+```
+
+To remove or reset these entries later:
+
+```bash
+rm -rf .agents/skills/vms-engine \
+  .agents/skills/vms_app_backend \
+  .agents/skills/vms_app_frontend
+```
+
 ## Quick links
 
 | Repo | README | AGENTS.md | Stack |
