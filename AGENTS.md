@@ -12,7 +12,7 @@ This workspace contains three independent sub-projects, each its own git reposit
 | `vms_app_backend/` | Python 3.11 · FastAPI · uv · SQLAlchemy | Control plane: camera topology, event processing, face recognition, camera control, worker orchestration |
 | `vms_app_frontend/` | TypeScript · Electron + Vite · Expo RN · pnpm | User-facing clients: desktop monitoring app, mobile/web companion |
 
-Each sub-project has its own **`AGENTS.md`** — read it before working in that repo. The root `reasonix.toml` loads skills from all three.
+Each sub-project has its own **`AGENTS.md`** — read it before working in that repo.
 
 ## Architecture
 
@@ -148,7 +148,7 @@ Key project-specific skills:
 When working in a sub-project, prefer its own skills over generic ones. Read the sub-project's `AGENTS.md` for the full skill list.
 
 ### Agent workflow
-- Root `reasonix.toml` defines the agent config, model, and loads skills from `.agents/skills/` in all three repos.
+- Root `reasonix.toml` defines the Reasonix agent config, model, and loads skills from `.agents/skills/` in all three repos. Other agents (Copilot, Claude, etc.) use `.github/`, `.agents/`, and `AGENTS.md` directly.
 - Tool config folders (`.agents/`, `.codegraph/`, `.claude/`, `.gemini/`) are tracked in the workspace root.
 - Use Reasonix plan mode for multi-step tasks: plan in the target repo, execute there, validate with that repo's commands.
 - `.mcp.json` connects the `codegraph` MCP server for code navigation across all three repos.
