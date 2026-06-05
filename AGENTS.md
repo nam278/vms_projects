@@ -39,7 +39,14 @@ RTSP cameras ──────▶│    vms-engine (C++)   │────▶ R
 ```
 
 - **vms-engine**: ingests RTSP streams, runs TensorRT inference + object tracking, emits detection events to Redis/Kafka and RTSP outputs. Config-driven via YAML. Runs in Docker on NVIDIA GPU.
-- **vms_app_backend**: consumes engine events, manages camera topology, event rules, face recognition, and worker lifecycle. DDD + Hexagonal Architecture with `apps_v2/` as the active code path (`apps/` is legacy).
+- **vms_app_backend**: consumes engine events, manages camera topology, event rules, face recognition, and worker lifecycle. DDD + Hexagonal Architecture.
+  - **Active code path**: `apps_v2/` — mỗi sub-project là 1 project con riêng biệt:
+    - `apps_v2/vms_app/` — main control plane app (FastAPI, eventing, topology, timekeeping)
+    - `apps_v2/face_recognition/` — face recognition service (inference, search, register)
+    - `apps_v2/camera_control/` — camera control service (Hikvision, ONVIF, PTZ, audio)
+    - `apps_v2/worker/` — worker execution plane (manifest, recovery, reconcile)
+  - **Canonical docs**: `docs_v2/` — product truth, domain docs, phase execution, engineering docs
+  - `apps/` là **legacy** — không dùng nữa
 - **vms_app_frontend**: desktop (Electron + TanStack Router) and mobile (Expo Router + Zustand) clients consuming the backend REST API.
 
 ## Commands
