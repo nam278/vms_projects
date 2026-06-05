@@ -88,6 +88,58 @@ cd apps/mobile && pnpm start    # mobile Metro
 - Each sub-project is an **independent git repo** with its own `.git/`, dependencies, and CI. Changes in one repo don't automatically affect others.
 - Cross-cutting contract changes (API schemas, event formats, Redis/Kafka message shapes) should be coordinated but committed separately per repo.
 
+### CodeGraph (code intelligence)
+
+CodeGraph is initialized **per sub-project** (not at workspace root — root `.gitignore` excludes all three sub-project dirs). Each sub-project has its own `.codegraph/` with a local SQLite index.
+
+| Sub-project | Command | Scope |
+|---|---|---|
+| `vms_app_backend` | `cd vms_app_backend && codegraph init -i` | Python · FastAPI · DDD |
+| `vms_app_frontend` | `cd vms_app_frontend && codegraph init -i` | TypeScript · Electron · Expo |
+| `vms-engine` | `cd vms-engine && codegraph init -i` | C++ · DeepStream |
+
+When using CodeGraph MCP tools, always pass `projectPath` to target the correct sub-project:
+
+```
+codegraph_search(query="SymbolName", projectPath="/home/vms2/Vms/vms_app_backend")
+```
+
+To re-index after code changes: `codegraph sync` (from within the sub-project dir).
+
+### Skills (agent knowledge)
+
+Each sub-project has domain-specific skills in its own `.agents/skills/` directory. The workspace root aggregates them via **symlinks**:
+
+```
+/home/vms2/Vms/.agents/skills/
+├── vms_app_backend -> /home/vms2/Vms/vms_app_backend/.agents/skills
+├── vms_app_frontend -> /home/vms2/Vms/vms_app_frontend/.agents/skills
+└── vms-engine -> /home/vms2/Vms/vms-engine/.agents/skills
+```
+
+Key project-specific skills:
+
+| Sub-project | Notable skills |
+|---|---|
+| `vms_app_backend` | **Service generators (use these first for apps_v2 work):** |
+| | `generate-apps-v2-vms-app-api-skill` — vms_app API endpoints, use cases, DTOs |
+| | `generate-apps-v2-camera-control-skill` — camera control service (Hikvision, ONVIF, PTZ, audio) |
+| | `generate-apps-v2-face-recognition-skill` — face recognition service |
+| | `generate-apps-v2-worker-skill` — worker execution plane (manifest, recovery, reconcile) |
+| | `generate-apps-v2-vms-app-monitoring-app-skill` — monitoring app integration |
+| | **docs_v2 workflow (canonical docs → phase execution → implementation):** |
+| | `seed-brainstorm-to-domain-docs-skill` — brainstorm → canonical product/domain docs |
+| | `product-domain-to-phase-execution-skill` — product docs → phase execution bundle |
+| | `implement-apps-v2-vms-app-phase-skill` — implement one phase, sync docs |
+| | `maintain-docs-v2-skill` — create, backfill, reconcile docs_v2 bundles |
+| | **Foundation:** `clean-ddd-hexagonal`, `fastapi-python`, `python-testing-patterns` |
+| | **Infra:** `kafka-development`, `redis-development`, `postgresql-database-engineering` |
+| | **⚠️ Always start with:** `using-superpowers` — must invoke before ANY response |
+| `vms_app_frontend` | `apps-app-page-pattern`, `apps-mobile-screen-pattern`, `electron`, `expo-react-native-typescript`, `tanstack-router-best-practices`, `tanstack-query-best-practices` |
+| `vms-engine` | `vms-engine-deepstream-feature-workflow`, `cmake`, `deepstream`, `docker` |
+
+When working in a sub-project, prefer its own skills over generic ones. Read the sub-project's `AGENTS.md` for the full skill list.
+
 ### Agent workflow
 - Root `reasonix.toml` defines the agent config, model, and loads skills from `.agents/skills/` in all three repos.
 - Tool config folders (`.agents/`, `.codegraph/`, `.claude/`, `.gemini/`) are tracked in the workspace root.
