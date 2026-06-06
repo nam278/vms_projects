@@ -24,6 +24,10 @@ Thumbs.db
 # Logs
 *.log
 
+# Temp
+tmp/
+*.tmp
+
 # Independent sub-project repos (each has its own .git)
 vms-engine/
 vms_app_backend/
