@@ -28,6 +28,9 @@ Thumbs.db
 tmp/
 *.tmp
 
+# Prompts
+.prompts/
+
 # Independent sub-project repos (each has its own .git)
 vms-engine/
 vms_app_backend/
