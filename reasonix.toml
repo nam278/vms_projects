@@ -29,7 +29,7 @@ models      = ["deepseek-v4-flash"]
 default     = "deepseek-v4-flash"
 api_key_env = "DEEPSEEK_API_KEY"
 balance_url = "https://api.deepseek.com/user/balance"   # optional; wallet-balance endpoint shown in the status bar
-context_window = 262144   # tokens; compaction triggers near this limit
+context_window = 131072   # tokens; compaction triggers near this limit
 price       = { cache_hit = 0.0028, input = 0.14, output = 0.28, currency = "$" }   # per 1M tokens
 
 [[providers]]
@@ -50,7 +50,7 @@ base_url    = "https://token-plan-cn.xiaomimimo.com/v1"
 models      = ["mimo-v2.5-pro"]
 default     = "mimo-v2.5-pro"
 api_key_env = "MIMO_API_KEY"
-context_window = 262144   # tokens; compaction triggers near this limit
+context_window = 196608   # tokens; compaction triggers near this limit
 price       = { cache_hit = 0.003625, input = 0.435, output = 0.87, currency = "$" }   # per 1M tokens
 no_proxy    = true   # reach this base_url directly, never via the proxy
 
@@ -61,7 +61,7 @@ base_url    = "https://token-plan-cn.xiaomimimo.com/v1"
 models      = ["mimo-v2.5"]
 default     = "mimo-v2.5"
 api_key_env = "MIMO_API_KEY"
-context_window = 262144   # tokens; compaction triggers near this limit
+context_window = 131072   # tokens; compaction triggers near this limit
 price       = { cache_hit = 0.0028, input = 0.14, output = 0.28, currency = "$" }   # per 1M tokens
 no_proxy    = true   # reach this base_url directly, never via the proxy
 
