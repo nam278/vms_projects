@@ -13,9 +13,9 @@ max_steps   = 0
 temperature = 0.0
 auto_plan   = "off"   # off|on; off keeps plan mode manual
 # auto_plan_classifier = "deepseek-flash"   # optional; only used for borderline tasks
-soft_compact_ratio  = 0.5   # notice only; keeps cache-first prefix intact
-compact_ratio       = 0.65   # try compacting when prompt reaches this fraction
-compact_force_ratio = 0.8   # force compacting at this high-water mark
+soft_compact_ratio  = 0.45   # notice only; keeps cache-first prefix intact
+compact_ratio       = 0.6   # try compacting when prompt reaches this fraction
+compact_force_ratio = 0.78   # force compacting at this high-water mark
 # planner_model = "mimo"   # optional: enable two-model collaboration
 subagent_model = "deepseek-flash"   # default for runAs=subagent skills (cheaper)
 subagent_models = { review = "deepseek-pro", security_review = "deepseek-pro" }   # per-skill overrides
@@ -46,7 +46,7 @@ price       = { cache_hit = 0.003625, input = 0.435, output = 0.87, currency = "
 [[providers]]
 name        = "mimo-pro"
 kind        = "openai"
-base_url    = "https://token-plan-cn.xiaomimimo.com/v1"
+base_url    = "https://token-plan-sgp.xiaomimimo.com/v1"
 models      = ["mimo-v2.5-pro"]
 default     = "mimo-v2.5-pro"
 api_key_env = "MIMO_API_KEY"
@@ -57,7 +57,7 @@ no_proxy    = true   # reach this base_url directly, never via the proxy
 [[providers]]
 name        = "mimo-flash"
 kind        = "openai"
-base_url    = "https://token-plan-cn.xiaomimimo.com/v1"
+base_url    = "https://token-plan-sgp.xiaomimimo.com/v1"
 models      = ["mimo-v2.5"]
 default     = "mimo-v2.5"
 api_key_env = "MIMO_API_KEY"
