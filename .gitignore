@@ -32,7 +32,7 @@ tmp/
 .prompts/
 
 # Independent sub-project repos (each has its own .git)
-vms-engine/
-vms_app_backend/
-vms_app_frontend/
-.agents/skills/
+# vms-engine/
+# vms_app_backend/
+# vms_app_frontend/
+# .agents/skills/
