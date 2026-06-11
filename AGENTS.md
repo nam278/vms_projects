@@ -72,7 +72,7 @@ cmake --build build -- -j5
 cd vms_app_backend
 make install                    # root tooling
 cd apps_v2/vms_app && uv sync  # per-app setup
-cd apps_v2/vms_app && make format && make typecheck && make test
+cd apps_v2/vms_app && make format-changed && make typecheck-changed && make format && make typecheck && make test
 ```
 
 ### vms_app_frontend (TypeScript · pnpm)
@@ -155,8 +155,8 @@ When working in a sub-project, prefer its own skills over generic ones. Read the
 
 ### Code quality (cross-repo)
 - **vms-engine**: `./scripts/format.sh --check` + `cmake --build build -- -j5` before PR.
-- **vms_app_backend**: `make format && make typecheck && make test` from the app directory.
-- **vms_app_frontend**: `pnpm lint && pnpm typecheck && pnpm test` from the app directory.
+- **vms_app_backend**: `make format-changed && make typecheck-changed && make format && make typecheck && make test` from the app directory.
+- **vms_app_frontend**: `pnpm lint:changed && pnpm format:changed && pnpm typecheck:changed && pnpm lint && pnpm typecheck && pnpm test` from the app directory.
 
 ### Secrets
 - Never commit secrets, credentials, or API keys. `.env` files are gitignored.
